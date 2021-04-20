@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./web
+      args:
+        - buildno=1
+    volumes:
+      - ./../web:/usr/src/app
+    ports:
+      - "13000:3000"
+    expose:
+      - "3000"
+    container_name: portfolio-web-container
+    tty: true
+    deploy:
+      mode: repliated
+      replicas: 1
+      endpoint_mode: dnsrr
+
